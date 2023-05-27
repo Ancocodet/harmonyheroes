@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://bluehs0r4lt1c"]
+
+[ext_resource type="PackedScene" uid="uid://h14hmc1iwboo" path="res://prefabs/character.tscn" id="1_1a40x"]
+[ext_resource type="Texture2D" uid="uid://ct1q4t2hvgs12" path="res://assets/temp/platformPack_tile013.png" id="3_wkxcc"]
+[ext_resource type="Texture2D" uid="uid://cnggulwus7pab" path="res://assets/temp/backgroundForest.png" id="4_grntk"]
+[ext_resource type="Texture2D" uid="uid://05vdiqs33jse" path="res://assets/temp/platformPack_tile031.png" id="4_u4c4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40p4k"]
+size = Vector2(1280, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2pap"]
+size = Vector2(256, 40)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource("1_1a40x")]
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+offset = Vector2(640, 360)
+limit_bottom = 360
+limit_smoothed = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 656)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture_repeat = 2
+texture = ExtResource("3_wkxcc")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(640, 32)
+shape = SubResource("RectangleShape2D_40p4k")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(709, 454)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture_repeat = 2
+position = Vector2(128, 25)
+texture = ExtResource("4_u4c4g")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(128, 20)
+shape = SubResource("RectangleShape2D_a2pap")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_repeat = 2
+motion_mirroring = Vector2(1024, 720)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+texture = ExtResource("4_grntk")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 720)

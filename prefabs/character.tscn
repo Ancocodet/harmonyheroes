@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://h14hmc1iwboo"]
+
+[ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_5y6ru"]
+[ext_resource type="Texture2D" uid="uid://cehngitn0lymp" path="res://assets/temp/adventurer_idle.png" id="2_yqnej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
+size = Vector2(63, 92)
+
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_5y6ru")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(640, 368)
+shape = SubResource("RectangleShape2D_dlehk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_yqnej")
