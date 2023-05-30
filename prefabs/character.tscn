@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://h14hmc1iwboo"]
+[gd_scene load_steps=5 format=3 uid="uid://h14hmc1iwboo"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_5y6ru"]
 [ext_resource type="Texture2D" uid="uid://cehngitn0lymp" path="res://assets/temp/adventurer_idle.png" id="2_yqnej"]
+[ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_o3kaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(63, 92)
@@ -13,6 +14,16 @@ script = ExtResource("1_5y6ru")
 position = Vector2(640, 368)
 shape = SubResource("RectangleShape2D_dlehk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 texture = ExtResource("2_yqnej")
+
+[node name="Selector" type="Sprite2D" parent="Sprite"]
+visible = false
+position = Vector2(0, -45)
+texture = ExtResource("3_o3kaj")
+
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(640, 360)
+enabled = false
+limit_bottom = 360

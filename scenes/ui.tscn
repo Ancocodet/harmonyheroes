@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbhqm8esk484k"]
+
+[ext_resource type="Texture2D" uid="uid://bv8lf3quuetxu" path="res://assets/temp/one-square.svg" id="1_ovo7d"]
+[ext_resource type="Script" path="res://scenes/ingame_gui.gd" id="1_q4xk1"]
+[ext_resource type="Texture2D" uid="uid://gs7x7asfvdwh" path="res://assets/temp/two-square.svg" id="2_bf6ql"]
+[ext_resource type="Texture2D" uid="uid://yk6l4g0hcpxm" path="res://assets/temp/one-square-fill.svg" id="2_ks1em"]
+[ext_resource type="Texture2D" uid="uid://1blbnpnikevv" path="res://assets/temp/three-square.svg" id="3_7mrhs"]
+[ext_resource type="Texture2D" uid="uid://8fl5ldq6cqwa" path="res://assets/temp/two-square-fill.svg" id="4_bf2fy"]
+[ext_resource type="Texture2D" uid="uid://bsonxwsh6ixot" path="res://assets/temp/three-square-fill.svg" id="6_0x7iq"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q4xk1")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="CharacterSelection" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CharOne" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_ovo7d")
+expand_mode = 1
+
+[node name="CharOneActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_ks1em")
+expand_mode = 1
+
+[node name="CharTwo" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_bf6ql")
+expand_mode = 1
+
+[node name="CharTwoActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("4_bf2fy")
+expand_mode = 1
+
+[node name="CharThree" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_7mrhs")
+expand_mode = 1
+
+[node name="CharThreeActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+visible = false
+clip_contents = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("6_0x7iq")
+expand_mode = 1

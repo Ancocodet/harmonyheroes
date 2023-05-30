@@ -5,12 +5,26 @@ extends CharacterBody2D
 @export var gravity = 1200.0
 
 var screen_size
+var active = false
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
-func _physics_process(delta):
-	var camera = get_viewport_transform()
+func activate():
+	$Sprite/Selector.visible = true
+	$Camera.enabled = true
+	active = true
+	
+func deactivate():
+	active = false
+	$Sprite/Selector.visible = false
+	$Camera.enabled = false
+
+func _physics_process(delta):	
+	if !active:
+		velocity.y += delta * gravity
+		move_and_slide()
+		return
 	
 	if Input.is_action_pressed("move_right"):
 		velocity.x += speed
