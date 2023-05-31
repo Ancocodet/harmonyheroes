@@ -20,6 +20,9 @@ func deactivate():
 	$Sprite/Selector.visible = false
 	$Camera.enabled = false
 
+func teleport(x: float, y: float):
+	position = Vector2(x, y)
+
 func _physics_process(delta):	
 	if !active:
 		velocity.y += delta * gravity

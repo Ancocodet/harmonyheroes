@@ -1,11 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://bluehs0r4lt1c"]
+[gd_scene load_steps=15 format=3 uid="uid://bluehs0r4lt1c"]
 
-[ext_resource type="PackedScene" uid="uid://h14hmc1iwboo" path="res://prefabs/character.tscn" id="1_1a40x"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="1_wfqax"]
+[ext_resource type="AudioStream" uid="uid://b3s1rvwcosb8v" path="res://assets/temp/TestBackground.wav" id="1_yanpc"]
+[ext_resource type="Texture2D" uid="uid://vjnu0uy5psq6" path="res://assets/temp/platformPack_tile009.png" id="2_dbicc"]
 [ext_resource type="Script" path="res://scripts/character_manager.gd" id="2_mdb71"]
+[ext_resource type="PackedScene" uid="uid://dlmgds358na8a" path="res://prefabs/characters/drummer.tscn" id="3_0wnk3"]
 [ext_resource type="Texture2D" uid="uid://ct1q4t2hvgs12" path="res://assets/temp/platformPack_tile013.png" id="3_wkxcc"]
 [ext_resource type="Texture2D" uid="uid://cnggulwus7pab" path="res://assets/temp/backgroundForest.png" id="4_grntk"]
 [ext_resource type="Texture2D" uid="uid://05vdiqs33jse" path="res://assets/temp/platformPack_tile031.png" id="4_u4c4g"]
+[ext_resource type="PackedScene" uid="uid://csj32seb7t3t2" path="res://prefabs/characters/flute.tscn" id="4_wcdli"]
+[ext_resource type="PackedScene" uid="uid://w6v4ycoeup8i" path="res://prefabs/characters/guitar.tscn" id="5_03wom"]
 [ext_resource type="PackedScene" uid="uid://dbhqm8esk484k" path="res://scenes/ui.tscn" id="5_5lwdt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07vb3"]
+size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_40p4k"]
 size = Vector2(1280, 64)
@@ -13,18 +21,39 @@ size = Vector2(1280, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2pap"]
 size = Vector2(256, 40)
 
-[node name="TestLevel" type="Node2D"]
+[node name="test_level" type="Node2D"]
+
+[node name="Checkpoint" type="Area2D" parent="."]
+position = Vector2(1200, 575)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_wfqax")
+
+[node name="Sprite" type="Sprite2D" parent="Checkpoint"]
+texture = ExtResource("2_dbicc")
+
+[node name="CollissionShape" type="CollisionShape2D" parent="Checkpoint"]
+shape = SubResource("RectangleShape2D_07vb3")
+
+[node name="AudioManager" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="AudioManager"]
+stream = ExtResource("1_yanpc")
+bus = &"Music"
 
 [node name="CharacterManager" type="Node" parent="."]
 script = ExtResource("2_mdb71")
 
-[node name="Character1" parent="CharacterManager" instance=ExtResource("1_1a40x")]
-position = Vector2(-368, 136)
+[node name="Drummer" parent="CharacterManager" instance=ExtResource("3_0wnk3")]
+position = Vector2(-250, 0)
+collision_layer = 2
 
-[node name="Character2" parent="CharacterManager" instance=ExtResource("1_1a40x")]
+[node name="Flute" parent="CharacterManager" instance=ExtResource("4_wcdli")]
+collision_layer = 2
 
-[node name="Character3" parent="CharacterManager" instance=ExtResource("1_1a40x")]
-position = Vector2(415, 100)
+[node name="Guitar" parent="CharacterManager" instance=ExtResource("5_03wom")]
+position = Vector2(250, 0)
+collision_layer = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 texture_repeat = 2
@@ -56,7 +85,6 @@ position = Vector2(128, 20)
 shape = SubResource("RectangleShape2D_a2pap")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_repeat = 2
@@ -72,3 +100,5 @@ region_rect = Rect2(0, 0, 1280, 720)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("5_5lwdt")]
+
+[connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]

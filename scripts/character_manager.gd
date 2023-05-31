@@ -4,8 +4,9 @@ var characters
 @export var current_character = 0
 
 func _ready():
-	characters = [$Character1, $Character2, $Character3]
+	characters = get_children()
 	characters[current_character].activate()
+	GameManager.teleport_player.connect(_on_teleport)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("char_one") and current_character != 0:
@@ -27,3 +28,9 @@ func switch_to(index):
 	characters[current_character].activate()
 	
 	$"../CanvasLayer/UI".selected_character(index)
+
+func _on_teleport():
+	var position = characters[current_character].position
+	for character in characters:
+		if character != characters[current_character]:
+			character.teleport(position.x, position.y)
