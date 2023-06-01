@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-@export var speed = 10.0
-@export var jump_force = 750.0
-@export var gravity = 1200.0
+@export var speed = 300.0
+@export var jump_speed = -400.0
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var screen_size
 var active = false
@@ -23,9 +24,9 @@ func deactivate():
 func teleport(x: float, y: float):
 	position = Vector2(x, y)
 
-func _physics_process(delta):	
+func _physics_process(delta):
+	velocity.y += gravity * delta
 	if !active:
-		velocity.y += delta * gravity
 		move_and_slide()
 		return
 	
@@ -36,10 +37,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = 0
 		
-	if Input.is_action_pressed("jump") and is_on_floor():
-		velocity.y -= jump_force
-	else:
-		velocity.y += delta * gravity
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = jump_speed
 		
 	move_and_slide()
 	
