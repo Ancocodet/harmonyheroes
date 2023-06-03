@@ -13,12 +13,14 @@ func _ready():
 
 func activate():
 	$Sprite/Selector.visible = true
+	$Sprite/PointLight2D.enabled = true
 	$Camera.enabled = true
 	active = true
 	
 func deactivate():
 	active = false
 	$Sprite/Selector.visible = false
+	$Sprite/PointLight2D.enabled = false
 	$Camera.enabled = false
 
 func teleport(x: float, y: float):

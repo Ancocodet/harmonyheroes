@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://csj32seb7t3t2"]
+[gd_scene load_steps=7 format=3 uid="uid://csj32seb7t3t2"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_xf7mf"]
 [ext_resource type="Texture2D" uid="uid://dnn7ijs00tyrl" path="res://assets/character/flute.png" id="2_iu0cv"]
+[ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_nibkw"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_5ca0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(20, 38)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0c4to"]
+polygon = PackedVector2Array(-1, 19, -5, 14, -6, 8, -5, 2, -10, 0, -3, -7, -3, -18, 0, -19, 3, -19, 8, -8, 8, -1, 10, 7, 10, 13, 7, 19, 6, 19, 3, 15)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_xf7mf")
@@ -13,6 +17,10 @@ speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dlehk")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_0c4to")
+occluder_light_mask = 2
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_iu0cv")
@@ -22,6 +30,15 @@ visible = false
 position = Vector2(0, -22)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5ca0c")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite"]
+enabled = false
+color = Color(0.937255, 0.45098, 1, 1)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("2_nibkw")
+texture_scale = 5.0
 
 [node name="Camera" type="Camera2D" parent="."]
 enabled = false

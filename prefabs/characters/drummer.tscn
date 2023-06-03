@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlmgds358na8a"]
+[gd_scene load_steps=10 format=3 uid="uid://dlmgds358na8a"]
 
 [ext_resource type="Script" path="res://scripts/characters/drummer.gd" id="1_arf7p"]
 [ext_resource type="Texture2D" uid="uid://ddnrv02ljm8af" path="res://assets/character/drummer.png" id="2_b27cv"]
+[ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_fp6o0"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_8y3yr"]
 [ext_resource type="Texture2D" uid="uid://duolefvv48e0s" path="res://assets/yellow_note.png" id="3_kfygv"]
 
@@ -23,6 +24,10 @@ turbulence_enabled = true
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkgyw"]
 size = Vector2(32, 32)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_r182t"]
+cull_mode = 1
+polygon = PackedVector2Array(-10.4679, -9.94151, -10.5513, -16.6991, -7.79824, -18.618, 1.04507, -18.4511, 4.79931, -16.1986, 10.5558, -7.43869, 10.0552, -2.51647, 12.2244, 0.820633, 12.0575, 8.32911, 9.05411, 12.6673, 2.54677, 12.5839, 2.29649, 18.4238, -12.3033, 18.6741, -12.2199, -3.43417)
+
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_arf7p")
 speed = 20.0
@@ -33,6 +38,15 @@ shape = SubResource("RectangleShape2D_dlehk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_b27cv")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite"]
+enabled = false
+color = Color(0.937255, 0.45098, 1, 1)
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 50.0
+texture = ExtResource("2_fp6o0")
+texture_scale = 5.0
 
 [node name="ParticleSystem" type="GPUParticles2D" parent="Sprite"]
 position = Vector2(10, 5)
@@ -65,3 +79,7 @@ zoom = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 720
 limit_smoothed = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_r182t")
+occluder_light_mask = 2
