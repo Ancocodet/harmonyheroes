@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://w6v4ycoeup8i"]
+[gd_scene load_steps=11 format=3 uid="uid://w6v4ycoeup8i"]
 
-[ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_x1g6b"]
+[ext_resource type="Script" path="res://scripts/characters/guitar.gd" id="1_6ea5m"]
+[ext_resource type="Texture2D" uid="uid://ctyy6g1qmdd7m" path="res://assets/temp/cursor/cursor_pointerFlat.png" id="2_4hd4q"]
 [ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_8sruh"]
 [ext_resource type="Texture2D" uid="uid://cvvyybfvnyd57" path="res://assets/character/guitar.png" id="2_yn2d1"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_4u0bx"]
+[ext_resource type="Texture2D" uid="uid://dp7fhtp4ixa2a" path="res://assets/temp/cursor/crossair_white.png" id="3_ocw3y"]
+[ext_resource type="Texture2D" uid="uid://yxln8ot8g7sy" path="res://assets/temp/cursor/crossair_red.png" id="4_20xer"]
+[ext_resource type="Texture2D" uid="uid://duolefvv48e0s" path="res://assets/yellow_note.png" id="8_ux1g6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(22, 36)
@@ -12,7 +16,11 @@ size = Vector2(22, 36)
 polygon = PackedVector2Array(3, 18, 5, 11, 8, 8, 8, 5, 7, 0, 11, 0, 11, -12, 7, -18, -11, -18, -11, -2, -7, -2, -10, 9, -7, 12, -6, 18, -4, 17, 0, 14)
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_x1g6b")
+script = ExtResource("1_6ea5m")
+default_cursor = ExtResource("2_4hd4q")
+cursor_targeting = ExtResource("3_ocw3y")
+cursor_outranged = ExtResource("4_20xer")
+puzzle_range = 155.0
 speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,3 +53,17 @@ limit_bottom = 720
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_ggqu8")
 occluder_light_mask = 2
+
+[node name="ParticleSystem" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 25
+lifetime = 2.0
+randomness = 0.46
+texture = ExtResource("8_ux1g6")
+emission_shape = 1
+emission_sphere_radius = 25.0
+gravity = Vector2(0, 0)
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.5
+scale_amount_max = 1.25

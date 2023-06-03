@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://csj32seb7t3t2"]
 
-[ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_xf7mf"]
+[ext_resource type="Script" path="res://scripts/characters/flute.gd" id="1_sihgv"]
 [ext_resource type="Texture2D" uid="uid://dnn7ijs00tyrl" path="res://assets/character/flute.png" id="2_iu0cv"]
 [ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_nibkw"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_5ca0c"]
@@ -12,7 +12,7 @@ size = Vector2(20, 38)
 polygon = PackedVector2Array(-1, 19, -5, 14, -6, 8, -5, 2, -10, 0, -3, -7, -3, -18, 0, -19, 3, -19, 8, -8, 8, -1, 10, 7, 10, 13, 7, 19, 6, 19, 3, 15)
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_xf7mf")
+script = ExtResource("1_sihgv")
 speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -25,6 +25,7 @@ DataManager="*res://scripts/data_manager.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+mouse_cursor/custom_image="res://assets/temp/cursor/cursor_pointerFlat.png"
 
 [editor]
 
