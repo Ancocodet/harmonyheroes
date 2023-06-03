@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://w6v4ycoeup8i"]
+[gd_scene load_steps=7 format=3 uid="uid://w6v4ycoeup8i"]
 
 [ext_resource type="Script" path="res://scripts/character_controller.gd" id="1_x1g6b"]
 [ext_resource type="Texture2D" uid="uid://cvvyybfvnyd57" path="res://assets/character/guitar.png" id="2_yn2d1"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_4u0bx"]
+[ext_resource type="Texture2D" uid="uid://duolefvv48e0s" path="res://assets/yellow_note.png" id="4_lgggd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(22, 36)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_thfb6"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+spread = 50.0
+gravity = Vector3(98, -15, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_x1g6b")
 speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_dlehk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
 texture = ExtResource("2_yn2d1")
 
 [node name="Selector" type="Sprite2D" parent="Sprite"]
@@ -26,8 +34,13 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_4u0bx")
 
 [node name="Camera" type="Camera2D" parent="."]
-offset = Vector2(500, 360)
 enabled = false
 zoom = Vector2(2, 2)
-limit_left = -500
-limit_bottom = 360
+limit_left = 0
+limit_bottom = 720
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_thfb6")
+texture = ExtResource("4_lgggd")

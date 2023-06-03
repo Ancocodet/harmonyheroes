@@ -12,11 +12,9 @@ script = ExtResource("1_xf7mf")
 speed = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(640, 360)
 shape = SubResource("RectangleShape2D_dlehk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(640, 360)
 texture = ExtResource("2_iu0cv")
 
 [node name="Selector" type="Sprite2D" parent="Sprite"]
@@ -26,8 +24,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_5ca0c")
 
 [node name="Camera" type="Camera2D" parent="."]
-offset = Vector2(500, 360)
 enabled = false
 zoom = Vector2(2, 2)
-limit_left = -500
-limit_bottom = 360
+limit_left = 0
+limit_bottom = 720

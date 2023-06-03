@@ -1,11 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlmgds358na8a"]
+[gd_scene load_steps=8 format=3 uid="uid://dlmgds358na8a"]
 
 [ext_resource type="Script" path="res://scripts/characters/drummer.gd" id="1_arf7p"]
 [ext_resource type="Texture2D" uid="uid://ddnrv02ljm8af" path="res://assets/character/drummer.png" id="2_b27cv"]
 [ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_8y3yr"]
+[ext_resource type="Texture2D" uid="uid://duolefvv48e0s" path="res://assets/yellow_note.png" id="3_kfygv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(24, 37)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7frr"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_disable_z = true
+spread = 50.0
+gravity = Vector3(100, -25, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.5
+scale_max = 1.25
+turbulence_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkgyw"]
 size = Vector2(32, 32)
@@ -20,6 +33,17 @@ shape = SubResource("RectangleShape2D_dlehk")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_b27cv")
+
+[node name="ParticleSystem" type="GPUParticles2D" parent="Sprite"]
+position = Vector2(10, 5)
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_g7frr")
+texture = ExtResource("3_kfygv")
+lifetime = 2.5
+randomness = 0.05
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [node name="Selector" type="Sprite2D" parent="Sprite"]
 position = Vector2(0, -22)
@@ -38,6 +62,9 @@ shape = SubResource("RectangleShape2D_pkgyw")
 [node name="Camera" type="Camera2D" parent="."]
 enabled = false
 zoom = Vector2(2, 2)
-limit_left = -500
-limit_bottom = 1280
+limit_left = 0
+limit_bottom = 720
 limit_smoothed = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25

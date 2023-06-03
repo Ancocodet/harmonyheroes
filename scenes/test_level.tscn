@@ -205,6 +205,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_u4wg6"]
 tile_size = Vector2i(32, 32)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 physics_layer_1/collision_layer = 4
 custom_data_layer_0/name = "breakable"
@@ -216,6 +217,7 @@ sources/2 = SubResource("TileSetAtlasSource_qygyj")
 size = Vector2(64, 64)
 
 [node name="test_level" type="Node2D"]
+self_modulate = Color(0, 0, 0, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_u4wg6")
@@ -252,13 +254,14 @@ collision_mask = 5
 speed = 10.0
 
 [node name="Flute" parent="CharacterManager" instance=ExtResource("4_wcdli")]
+position = Vector2(150, 0)
 collision_layer = 2
 collision_mask = 5
 speed = 10.0
 jump_speed = -450.0
 
 [node name="Guitar" parent="CharacterManager" instance=ExtResource("5_03wom")]
-position = Vector2(250, 0)
+position = Vector2(400, 0)
 collision_layer = 2
 collision_mask = 5
 speed = 10.0
