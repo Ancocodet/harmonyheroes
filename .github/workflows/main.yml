@@ -8,7 +8,7 @@ env:
 jobs:
   export-windows:
     name: Windows Export
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.0.3
     steps:
@@ -23,7 +23,7 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          godot -v --export-debug "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
+          godot -v --export "Windows Desktop" ../build/windows/$EXPORT_NAME.exe
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -32,7 +32,7 @@ jobs:
 
   export-linux:
     name: Linux Export
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.0.3
     steps:
@@ -47,7 +47,7 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
-          godot -v --export-debug "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
+          godot -v --export "Linux/X11" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -56,7 +56,7 @@ jobs:
 
   export-mac:
     name: Mac Export
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container:
       image: barichello/godot-ci:4.0.3
     steps:
@@ -71,7 +71,7 @@ jobs:
       - name: Mac Build
         run: |
           mkdir -v -p build/mac
-          godot -v --export-debug "Mac OSX" ../build/mac/$EXPORT_NAME.zip
+          godot -v --export "macOS" ../build/mac/$EXPORT_NAME.zip
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
