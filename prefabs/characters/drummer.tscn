@@ -65,6 +65,3 @@ zoom = Vector2(2, 2)
 limit_left = 0
 limit_bottom = 720
 limit_smoothed = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.25
