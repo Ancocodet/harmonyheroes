@@ -18,10 +18,33 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: 🦺 Build Runnable
+      - name: 🦺 Build Debug Runnable
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/linux
           godot -v --headless --export-debug "linux" build/linux/$EXPORT_NAME.x86_64
+      - name: 🦺 Build Release Runnable
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          mkdir -v -p build/linux
+          godot -v --headless --export-release "linux" build/linux/$EXPORT_NAME.x86_64
+      - name: 💽 Get Current Tag
+        id: tag
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: devops-actions/action-get-tag@v1.0.1
+        with:
+          strip_v: true
+          default: 0.0.1
+      - name: 📦 Upload to itch.io
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: linux
+          ITCH_GAME: harmonyheroes
+          ITCH_USER: ancocodet
+          PACKAGE: build/linux
+          VERSION: ${{ steps.versiontag.outputs.tag }}
       - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -40,10 +63,33 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: 🦺 Build Runnable
+      - name: 🦺 Build Debug Runnable
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/windows
           godot -v --headless --export-debug "windows" build/windows/$EXPORT_NAME.exe
+      - name: 🦺 Build Release Runnable
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          mkdir -v -p build/windows
+          godot -v --headless --export-release "windows" build/windows/$EXPORT_NAME_64
+      - name: 💽 Get Current Tag
+        id: tag
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: devops-actions/action-get-tag@v1.0.1
+        with:
+          strip_v: true
+          default: 0.0.1
+      - name: 📦 Upload to itch.io
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: windows
+          ITCH_GAME: harmonyheroes
+          ITCH_USER: ancocodet
+          PACKAGE: build/windows
+          VERSION: ${{ steps.versiontag.outputs.tag }}
       - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -62,10 +108,33 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: 🦺 Build Runnable
+      - name: 🦺 Build Debug Runnable
+        if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/macos
           godot -v --headless --export-debug "macos" build/macos/$EXPORT_NAME.exe
+      - name: 🦺 Build Release Runnable
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        run: |
+          mkdir -v -p build/macos
+          godot -v --headless --export-release "macos" build/macos/$EXPORT_NAME.exe
+      - name: 💽 Get Current Tag
+        id: tag
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: devops-actions/action-get-tag@v1.0.1
+        with:
+          strip_v: true
+          default: 0.0.1
+      - name: 📦 Upload to itch.io
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
+        uses: manleydev/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: osx
+          ITCH_GAME: harmonyheroes
+          ITCH_USER: ancocodet
+          PACKAGE: build/macos
+          VERSION: ${{ steps.versiontag.outputs.tag }}
       - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
