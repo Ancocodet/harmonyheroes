@@ -1,14 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://csj32seb7t3t2"]
+[gd_scene load_steps=8 format=3 uid="uid://csj32seb7t3t2"]
 
 [ext_resource type="Script" path="res://scripts/characters/flute.gd" id="1_sihgv"]
 [ext_resource type="Texture2D" uid="uid://dnn7ijs00tyrl" path="res://assets/character/flute.png" id="2_iu0cv"]
 [ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_nibkw"]
+[ext_resource type="Texture2D" uid="uid://c06ka2jagoprm" path="res://assets/particles/green_note.png" id="4_f8pt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
 size = Vector2(20, 38)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0c4to"]
 polygon = PackedVector2Array(-1, 19, -5, 14, -6, 8, -5, 2, -10, 0, -3, -7, -3, -18, 0, -19, 3, -19, 8, -8, 8, -1, 10, 7, 10, 13, 7, 19, 6, 19, 3, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y5c2"]
+size = Vector2(32, 38)
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_sihgv")
@@ -24,6 +28,22 @@ occluder_light_mask = 2
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_iu0cv")
 
+[node name="ParticleSystem" type="CPUParticles2D" parent="Sprite"]
+position = Vector2(-5, 0)
+emitting = false
+amount = 20
+lifetime = 1.25
+randomness = 0.05
+texture = ExtResource("4_f8pt3")
+emission_shape = 1
+emission_sphere_radius = 5.0
+gravity = Vector2(50, -50)
+damping_max = 2.0
+angle_min = -45.0
+angle_max = 45.0
+scale_amount_min = 0.5
+scale_amount_max = 1.25
+
 [node name="PointLight2D" type="PointLight2D" parent="Sprite"]
 enabled = false
 color = Color(0.937255, 0.45098, 1, 1)
@@ -32,6 +52,14 @@ shadow_filter = 1
 shadow_filter_smooth = 50.0
 texture = ExtResource("2_nibkw")
 texture_scale = 5.0
+
+[node name="Scanner" type="Area2D" parent="Sprite"]
+position = Vector2(26, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Scanner"]
+shape = SubResource("RectangleShape2D_2y5c2")
 
 [node name="Camera" type="Camera2D" parent="."]
 enabled = false

@@ -1,11 +1,8 @@
 extends "res://scripts/character_controller.gd"
 
 @onready var scanner := $Sprite/Scanner
-@onready var tilemap := $"../../TileMap"
+@onready var tilemap := %TileMap
 @onready var particles := $Sprite/ParticleSystem
-
-func _ready():
-	character_manager = get_parent()
 
 func _process(_delta):
 	if !active:

@@ -29,10 +29,11 @@ func _process(_delta):
 		Input.set_custom_mouse_cursor(cursor_targeting)
 		
 	if Input.is_action_just_pressed("spell_puzzle"):
+		var current_position = get_local_mouse_position()
 		var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
 		var data = tile_map.get_cell_tile_data(0, clicked_cell)
 		if data and data.get_custom_data("activateable"):
-			$ParticleSystem.position = get_local_mouse_position()
+			$ParticleSystem.position = current_position
 			$ParticleSystem.emitting = true
 			await get_tree().create_timer(0.5).timeout
 			GameManager.activate_book(clicked_cell)
