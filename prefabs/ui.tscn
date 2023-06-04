@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bsonxwsh6ixot" path="res://assets/temp/three-square-fill.svg" id="6_0x7iq"]
 
 [sub_resource type="SystemFont" id="SystemFont_17ypl"]
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gtsf"]
 bg_color = Color(0.0941176, 0.133333, 0.14902, 1)
@@ -172,19 +173,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0941176, 0.133333, 0.14902, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="Pause"]
+[node name="MarginContainer" type="CenterContainer" parent="Pause"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_right = 125.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 450
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 450
-theme_override_constants/margin_bottom = 200
 
 [node name="ColorRect" type="ColorRect" parent="Pause/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(450, 400)
 layout_mode = 2
 color = Color(0.188235, 0.25098, 0.27451, 1)
 

@@ -34,7 +34,7 @@ func pause():
 		get_tree().paused = true
 
 func back_to_menu():
-	return
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	
 func exit_game():
 	get_tree().quit()

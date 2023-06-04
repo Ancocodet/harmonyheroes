@@ -11,10 +11,13 @@ var data = {
 		}
 	},
 	"save_game": {
-		"scene": "first_level",
+		"scene": "level_1",
 		"checkpoint": 0   
 	}
 }
+
+func get_level_to_load():
+	return "res://scenes/levels/" + data.save_game.scene + ".tscn"
 
 func _ready():
 	load_file()
