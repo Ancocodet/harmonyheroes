@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-@export var speed = 300.0
-@export var jump_speed = -400.0
+@export var max_speed = 900.0
+@export var speed = 10.0
+@export var jump_speed = -450.0
 var health = 100.0
 
 @onready var character_manager = get_parent()
@@ -36,9 +37,9 @@ func _physics_process(delta):
 		return
 	
 	if Input.is_action_pressed("move_right"):
-		velocity.x += speed
+		velocity.x = min(velocity.x + speed, max_speed)
 	elif Input.is_action_pressed("move_left"):
-		velocity.x -= speed
+		velocity.x = max(velocity.x - speed, -max_speed)
 	else:
 		velocity.x = 0
 		

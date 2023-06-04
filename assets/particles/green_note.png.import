@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4jrc8455de8h"
-path="res://.godot/imported/blue_note.png-c23228323e3146ec3d33291829085548.ctex"
+uid="uid://c06ka2jagoprm"
+path="res://.godot/imported/green_note.png-f4d719820c8ecfe6064866cc38f25e33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/blue_note.png"
-dest_files=["res://.godot/imported/blue_note.png-c23228323e3146ec3d33291829085548.ctex"]
+source_file="res://assets/particles/green_note.png"
+dest_files=["res://.godot/imported/green_note.png-f4d719820c8ecfe6064866cc38f25e33.ctex"]
 
 [params]
 
