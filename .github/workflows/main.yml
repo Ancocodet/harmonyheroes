@@ -1,6 +1,12 @@
 name: Build Godot Project
 
-on: [ workflow_dispatch ]
+on:
+  push:
+    branches: [ main ]
+  release:
+    branches: [ main ]
+    types: [published]
+  workflow_dispatch:
 
 env:
   EXPORT_NAME: harmonyheroes
