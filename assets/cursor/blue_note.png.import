@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp7fhtp4ixa2a"
-path="res://.godot/imported/crossair_white.png-0c055ca06de9093ca7826409ea8790fd.ctex"
+uid="uid://c1jor7m0hoyp4"
+path="res://.godot/imported/blue_note.png-30185d5d9dfd739121e226cbf998065c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/temp/cursor/crossair_white.png"
-dest_files=["res://.godot/imported/crossair_white.png-0c055ca06de9093ca7826409ea8790fd.ctex"]
+source_file="res://assets/cursor/blue_note.png"
+dest_files=["res://.godot/imported/blue_note.png-30185d5d9dfd739121e226cbf998065c.ctex"]
 
 [params]
 

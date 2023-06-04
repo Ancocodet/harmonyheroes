@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlmgds358na8a"]
+[gd_scene load_steps=8 format=3 uid="uid://dlmgds358na8a"]
 
 [ext_resource type="Script" path="res://scripts/characters/drummer.gd" id="1_arf7p"]
 [ext_resource type="Texture2D" uid="uid://ddnrv02ljm8af" path="res://assets/character/drummer.png" id="2_b27cv"]
 [ext_resource type="Texture2D" uid="uid://2382rgldv2d8" path="res://assets/lighting.png" id="2_fp6o0"]
-[ext_resource type="Texture2D" uid="uid://vvp2kao0ufqb" path="res://assets/temp/ChevronDown.svg" id="3_8y3yr"]
 [ext_resource type="Texture2D" uid="uid://duolefvv48e0s" path="res://assets/yellow_note.png" id="3_kfygv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlehk"]
@@ -51,11 +50,6 @@ angle_min = -45.0
 angle_max = 45.0
 scale_amount_min = 0.5
 scale_amount_max = 1.25
-
-[node name="Selector" type="Sprite2D" parent="Sprite"]
-position = Vector2(0, -22)
-scale = Vector2(0.495, 0.495)
-texture = ExtResource("3_8y3yr")
 
 [node name="Scanner" type="Area2D" parent="Sprite"]
 position = Vector2(30, 0)

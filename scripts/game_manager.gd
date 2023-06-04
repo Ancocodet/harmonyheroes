@@ -16,6 +16,9 @@ func checkpoint_reached(checkpoint):
 	teleport_player.emit()
 	DataManager.save_game(get_tree().current_scene.get_name(), 1)
 
+func get_last_checkpoint():
+	return current_checkpoint
+
 func activate_book(tile: Vector2):
 	if !activated_books.has(tile):
 		activated_books.append(tile)
