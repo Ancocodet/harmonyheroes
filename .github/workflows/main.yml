@@ -7,11 +7,8 @@ env:
   EXPORT_NAME: harmonyheroes
 
 jobs:
-  build-debug:
+  build-linux:
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        platform: [linux, windows, mac]
     container:
       image: barichello/godot-ci:4.0.3
     steps:
@@ -25,11 +22,57 @@ jobs:
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
       - name: Build Runnable
         run: |
-          mkdir -v -p build/${{ matrix.platform }}
-          godot -v --headless --export-debug ${{ matrix.platform }} ../build/windows/$EXPORT_NAME.exe
+          mkdir -v -p build/linux
+          godot -v --headless --export-debug "linux" ../build/linux/$EXPORT_NAME.x86_64
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: ${{ matrix.platform }}
-          path: build/${{ matrix.platform }}
+          name: linux
+          path: build/linux
+          
+  build-windows:
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Build Runnable
+        run: |
+          mkdir -v -p build/windows
+          godot -v --headless --export-debug "windows" ../build/windows/$EXPORT_NAME.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: windows
+          path: build/windows
+          
+  build-macos:
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.0.3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: Build Runnable
+        run: |
+          mkdir -v -p build/macos
+          godot -v --headless --export-debug "macos" ../build/macos/$EXPORT_NAME.exe
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: macos
+          path: build/macos
 
