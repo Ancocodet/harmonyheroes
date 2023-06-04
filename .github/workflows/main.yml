@@ -10,14 +10,15 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        name: 🧾 Checkout
         with:
           lfs: true
       - uses: chickensoft-games/setup-godot@v1
         name: 🤖 Setup Godot
         with:
           version: 4.0.3
+          use-dotnet: false
       - name: Build Runnable
         run: |
           mkdir -v -p build/linux
@@ -31,14 +32,15 @@ jobs:
   build-windows:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        name: 🧾 Checkout
         with:
           lfs: true
       - uses: chickensoft-games/setup-godot@v1
         name: 🤖 Setup Godot
         with:
           version: 4.0.3
+          use-dotnet: false
       - name: Build Runnable
         run: |
           mkdir -v -p build/windows
@@ -52,14 +54,15 @@ jobs:
   build-macos:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        name: 🧾 Checkout
         with:
           lfs: true
       - uses: chickensoft-games/setup-godot@v1
         name: 🤖 Setup Godot
         with:
           version: 4.0.3
+          use-dotnet: false
       - name: Build Runnable
         run: |
           mkdir -v -p build/macos
