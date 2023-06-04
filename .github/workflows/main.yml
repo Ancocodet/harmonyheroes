@@ -8,18 +8,16 @@ env:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.0.3
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - uses: chickensoft-games/setup-godot@v1
+        name: 🤖 Setup Godot
+        with:
+          version: 4.0.3
       - name: Build Runnable
         run: |
           mkdir -v -p build/linux
@@ -31,18 +29,16 @@ jobs:
           path: build/linux
           
   build-windows:
-    runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.0.3
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - uses: chickensoft-games/setup-godot@v1
+        name: 🤖 Setup Godot
+        with:
+          version: 4.0.3
       - name: Build Runnable
         run: |
           mkdir -v -p build/windows
@@ -54,18 +50,16 @@ jobs:
           path: build/windows
           
   build-macos:
-    runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.0.3
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           lfs: true
-      - name: Setup
-        run: |
-          mkdir -v -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - uses: chickensoft-games/setup-godot@v1
+        name: 🤖 Setup Godot
+        with:
+          version: 4.0.3
       - name: Build Runnable
         run: |
           mkdir -v -p build/macos
