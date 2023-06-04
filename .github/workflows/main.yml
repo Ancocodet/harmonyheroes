@@ -3,7 +3,6 @@ name: Build Godot Project
 on: [ workflow_dispatch ]
 
 env:
-  GODOT_VERSION: 4.0.3
   EXPORT_NAME: harmonyheroes
 
 jobs:
@@ -19,11 +18,11 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: Build Runnable
+      - name: 🦺 Build Runnable
         run: |
           mkdir -v -p build/linux
-          godot -v --headless --export-debug "linux" ../build/linux/$EXPORT_NAME.x86_64
-      - name: Upload Artifact
+          godot -v --headless --export-debug "linux" build/linux/$EXPORT_NAME.x86_64
+      - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: linux
@@ -41,11 +40,11 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: Build Runnable
+      - name: 🦺 Build Runnable
         run: |
           mkdir -v -p build/windows
-          godot -v --headless --export-debug "windows" ../build/windows/$EXPORT_NAME.exe
-      - name: Upload Artifact
+          godot -v --headless --export-debug "windows" build/windows/$EXPORT_NAME.exe
+      - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: windows
@@ -63,11 +62,11 @@ jobs:
         with:
           version: 4.0.3
           use-dotnet: false
-      - name: Build Runnable
+      - name: 🦺 Build Runnable
         run: |
           mkdir -v -p build/macos
-          godot -v --headless --export-debug "macos" ../build/macos/$EXPORT_NAME.exe
-      - name: Upload Artifact
+          godot -v --headless --export-debug "macos" build/macos/$EXPORT_NAME.exe
+      - name: 📦 Upload Artifact
         uses: actions/upload-artifact@v1
         with:
           name: macos
