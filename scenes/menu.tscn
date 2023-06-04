@@ -77,9 +77,6 @@ expand_margin_bottom = 10.0
 
 [node name="menu" type="Node2D"]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.490196, 0.490196, 0.490196, 1)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -144,6 +141,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ot2nm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ywbbp")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o6vud")
 text = "EXIT TO DESKTOP"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.490196, 0.490196, 0.490196, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_grhxp")
