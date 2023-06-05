@@ -97,66 +97,77 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="CharacterSelection" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.188235, 0.25098, 0.27451, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CharacterSelection" type="VBoxContainer" parent="CenterContainer/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CharOne" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharOne" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 visible = false
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("1_ovo7d")
 expand_mode = 1
 
-[node name="CharOneActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharOneActive" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("2_ks1em")
 expand_mode = 1
 
-[node name="CharTwo" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharTwo" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("2_bf6ql")
 expand_mode = 1
 
-[node name="CharTwoActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharTwoActive" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 visible = false
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("4_bf2fy")
 expand_mode = 1
 
-[node name="CharThree" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharThree" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("3_7mrhs")
 expand_mode = 1
 
-[node name="CharThreeActive" type="TextureRect" parent="CenterContainer/MarginContainer/CharacterSelection"]
+[node name="CharThreeActive" type="TextureRect" parent="CenterContainer/MarginContainer/MarginContainer/CharacterSelection"]
 unique_name_in_owner = true
 visible = false
 clip_contents = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4

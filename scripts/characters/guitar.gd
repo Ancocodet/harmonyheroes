@@ -4,7 +4,6 @@ extends "res://scripts/character_controller.gd"
 @export var puzzle_range: float = 5
 
 var current_cursor = Input.get_current_cursor_shape()
-@onready var tile_map = $"../../TileMap"
 @export var checked_atlas = Vector2(3, 1) 
 
 func deactivate():
@@ -14,6 +13,7 @@ func deactivate():
 
 	if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
 		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
+		Input.set_default_cursor_shape(current_cursor)
 
 func _process(_delta):
 	if !active:
