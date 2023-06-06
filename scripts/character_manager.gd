@@ -47,6 +47,9 @@ func character_died():
 		respawn()
 
 func _process(_delta):
+	if Input.is_action_just_pressed("force_respawn"):
+		respawn()
+	
 	if Input.is_action_just_pressed("char_one") and current_character != 0:
 		if characters[0].health > 0:
 			switch_to(0)
@@ -75,3 +78,5 @@ func _on_teleport():
 	for character in characters:
 		if character != characters[current_character]:
 			character.teleport(position.x, position.y)
+			character.visible = true
+			character.health = 100

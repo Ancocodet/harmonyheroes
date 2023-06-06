@@ -30,6 +30,7 @@ func _physics_process(delta):
 			character_manager.character_died()
 		
 	if health <= 0.0:
+		velocity.x = 0
 		return
 	
 	

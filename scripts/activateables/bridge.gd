@@ -6,14 +6,14 @@ extends "res://scripts/activatable.gd"
 @export var end_tile: Vector2
 
 @export var bridge_tile: Vector2 = Vector2(1, 5)
-@onready var tile_map = $"../../TileMap"
+@onready var tile_map = $TileMap
 
 func activate():
 	for i in range(end_tile.x - start_tile.x):
 		var tile = Vector2(start_tile.x + i, start_tile.y)
 		tile_map.set_cell(0, tile, 0, bridge_tile)
-		await get_tree().create_timer(0.25).timeout
-	await get_tree().create_timer(0.25 * tiles.size()).timeout
+		await get_tree().create_timer(0.15).timeout
+	await get_tree().create_timer(0.15 * tiles.size()).timeout
 	
 func deactivate():
 	await get_tree().create_timer(5).timeout

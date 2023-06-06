@@ -258,6 +258,92 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ef1wh")
 theme_override_styles/focus = SubResource("StyleBoxFlat_rwo02")
 text = "BACK TO DESKTOP"
 
+[node name="End" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.133333, 0.14902, 1)
+
+[node name="MarginContainer" type="CenterContainer" parent="End"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="End/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(450, 400)
+layout_mode = 2
+color = Color(0.188235, 0.25098, 0.27451, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="End/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="End/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_17ypl")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[center]THE END[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_17ypl")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "Unfortunately we had no time for more content, we hope you enjoyed it anyway."
+fit_content = true
+scroll_active = false
+
+[node name="MenuButton" type="Button" parent="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_f3tw0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_v2sy1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v2sy1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f3tw0")
+text = "BACK TO MENU"
+
+[node name="DesktopButton" type="Button" parent="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_rwo02")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ef1wh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ef1wh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_rwo02")
+text = "BACK TO DESKTOP"
+
 [connection signal="pressed" from="Pause/MarginContainer/ColorRect/MarginContainer/VBoxContainer/ResumeButton" to="." method="pause"]
 [connection signal="pressed" from="Pause/MarginContainer/ColorRect/MarginContainer/VBoxContainer/MenuButton" to="." method="back_to_menu"]
 [connection signal="pressed" from="Pause/MarginContainer/ColorRect/MarginContainer/VBoxContainer/DesktopButton" to="." method="exit_game"]
+[connection signal="pressed" from="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer/MenuButton" to="." method="back_to_menu"]
+[connection signal="pressed" from="End/MarginContainer/ColorRect/MarginContainer/VBoxContainer/DesktopButton" to="." method="exit_game"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cm1lrlipn0dlh"]
+[gd_scene load_steps=15 format=3 uid="uid://cm1lrlipn0dlh"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_8jguu"]
 [ext_resource type="TileSet" uid="uid://bjs6pmdcl2aok" path="res://scenes/levels/tileset.tres" id="1_grhxp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddnrv02ljm8af" path="res://assets/character/drummer.png" id="3_o8i7i"]
 [ext_resource type="Texture2D" uid="uid://dnn7ijs00tyrl" path="res://assets/character/flute.png" id="4_oxbpx"]
 [ext_resource type="Texture2D" uid="uid://cvvyybfvnyd57" path="res://assets/character/guitar.png" id="5_c5nd1"]
+[ext_resource type="AudioStream" uid="uid://tytwrt26n0rg" path="res://assets/sounds/harmony_heroes.wav" id="7_rgy64"]
 
 [sub_resource type="SystemFont" id="SystemFont_a5csv"]
 
@@ -176,6 +177,12 @@ texture = ExtResource("5_c5nd1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(640, 360)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_rgy64")
+autoplay = true
+max_distance = 1e+07
+bus = &"Music"
 
 [connection signal="pressed" from="CanvasLayer/Control/ColorRect/MarginContainer/VBoxContainer/PlayButton" to="CanvasLayer/Control" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/ColorRect/MarginContainer/VBoxContainer/ExitButton" to="CanvasLayer/Control" method="_on_exit_button_pressed"]

@@ -22,6 +22,9 @@ func selected_character(index):
 	current_selection = index
 
 func pause():
+	if $End.visible:
+		return
+		
 	if $Pause.visible:
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_VISIBLE:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
@@ -31,6 +34,13 @@ func pause():
 		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_HIDDEN:
 			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 		$Pause.visible = true
+		get_tree().paused = true
+
+func game_ended():
+	if !$End.visible:
+		if DisplayServer.mouse_get_mode() == DisplayServer.MOUSE_MODE_HIDDEN:
+			DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+		$End.visible = true
 		get_tree().paused = true
 
 func back_to_menu():
