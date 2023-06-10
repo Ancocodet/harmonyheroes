@@ -116,12 +116,12 @@ jobs:
         if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/macos
-          godot -v --headless --export-debug "macos" build/macos/$EXPORT_NAME.app
+          godot -v --headless --export-debug "mac" build/macos/$EXPORT_NAME.app
       - name: 🦺 Build Release Runnable
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/macos
-          godot -v --headless --export-release "macos" build/macos/$EXPORT_NAME.app
+          godot -v --headless --export-release "mac" build/macos/$EXPORT_NAME.app
       - name: 💽 Get Current Tag
         id: tag
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
