@@ -37,10 +37,9 @@ jobs:
       - name: 💽 Get Current Tag
         id: tag
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        uses: devops-actions/action-get-tag@v1.0.1
+        uses: dawidd6/action-get-tag@v1
         with:
           strip_v: true
-          default: 0.0.1
       - name: 📦 Upload to itch.io
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: manleydev/butler-publish-itchio-action@master
@@ -78,14 +77,13 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/windows
-          godot -v --headless --export-release "windows" build/windows/$EXPORT_NAME_64
+          godot -v --headless --export-release "windows" build/windows/$EXPORT_NAME.exe
       - name: 💽 Get Current Tag
         id: tag
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        uses: devops-actions/action-get-tag@v1.0.1
+        uses: dawidd6/action-get-tag@v1
         with:
           strip_v: true
-          default: 0.0.1
       - name: 📦 Upload to itch.io
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: manleydev/butler-publish-itchio-action@master
@@ -118,19 +116,18 @@ jobs:
         if: ${{ ! startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/macos
-          godot -v --headless --export-debug "macos" build/macos/$EXPORT_NAME.exe
+          godot -v --headless --export-debug "macos" build/macos/$EXPORT_NAME.app
       - name: 🦺 Build Release Runnable
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         run: |
           mkdir -v -p build/macos
-          godot -v --headless --export-release "macos" build/macos/$EXPORT_NAME.exe
+          godot -v --headless --export-release "macos" build/macos/$EXPORT_NAME.app
       - name: 💽 Get Current Tag
         id: tag
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
-        uses: devops-actions/action-get-tag@v1.0.1
+        uses: dawidd6/action-get-tag@v1
         with:
           strip_v: true
-          default: 0.0.1
       - name: 📦 Upload to itch.io
         if: ${{ startsWith(github.ref, 'refs/tags/') }}
         uses: manleydev/butler-publish-itchio-action@master
