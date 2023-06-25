@@ -2,7 +2,7 @@ class_name Checkpoint extends Area2D
 
 @export var id = 1
 @export var checked_atlas = Vector2(3, 1) 
-@onready var tilemap = $"../TileMap"
+@onready var tilemap = $"../../TileMap"
 
 var checked = false
 

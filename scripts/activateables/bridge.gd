@@ -6,7 +6,7 @@ extends "res://scripts/activatable.gd"
 @export var end_tile: Vector2
 
 @export var bridge_tile: Vector2 = Vector2(1, 5)
-@onready var tile_map = $TileMap
+@onready var tile_map = $"../../TileMap"
 
 func activate():
 	for i in range(end_tile.x - start_tile.x):
